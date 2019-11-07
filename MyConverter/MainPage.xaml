@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:local="clr-namespace:MyConverter"
+    x:Class="MyConverter.MainPage">
+    <RelativeLayout>
+        <Label x:Name="connectionLabel" RelativeLayout.XConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Width,
+            Factor=0}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Width,
+            Factor=1}"
+               RelativeLayout.YConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Height,
+            Factor=0}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Height,
+            Factor=0.08}"
+               BackgroundColor="SlateGray"
+               Text="Disconnected"
+               TextColor="White"
+               FontSize="Caption"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               Opacity="0"/>
+        <Label RelativeLayout.XConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Width,
+            Factor=0.1}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Width,
+            Factor=0.8}"
+               RelativeLayout.YConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Height,
+            Factor=0.2}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Height,
+            Factor=0.10}"
+            Text="MyConverter"
+            FontSize="Title"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"/>
+
+        <Grid RelativeLayout.XConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Width,
+            Factor=0.1}"
+              RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Width,
+            Factor=0.8}"
+              RelativeLayout.YConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Height,
+            Factor=0.35}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,
+            Property=Height,
+            Factor=0.45}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Entry x:Name="entry" Grid.Row="0" Grid.Column="0"
+                               Text="{Binding BaseValue}"
+                               Keyboard="Numeric"
+                               VerticalTextAlignment="Center"/>
+            <Picker x:Name="baseCurrency" Grid.Row="0" Grid.Column="1"
+                    HorizontalOptions="FillAndExpand"
+                    SelectedIndex="{Binding BaseCurrency}" />
+            <Label Grid.Row="1" Grid.ColumnSpan="2"
+                   Text="is equal to"
+                   FontSize="Default"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"/>
+            <Entry  Grid.Row="2" Grid.Column="0" IsReadOnly="True"
+                    Text="{Binding TargetValue}"
+                    VerticalTextAlignment="Center"/>
+            <Picker Grid.Row="2" Grid.Column="1" x:Name="targetCurrency"
+                    HorizontalOptions="FillAndExpand"
+                    SelectedIndex="{Binding TargetCurrency}"/>
+            <Button Grid.Row="3" Grid.ColumnSpan="2"
+                    Text="Convert"
+                    Clicked="OnConvert"
+                    CornerRadius="40"/>
+        </Grid>
+    </RelativeLayout>
+</ContentPage>
